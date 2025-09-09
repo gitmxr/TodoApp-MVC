@@ -1,0 +1,43 @@
+﻿@model TodoApp.Models.Todo
+
+<h2>Create Todo</h2>
+
+<form asp-action="Create" method="post">
+    @* <div asp-validation-summary="All" class="text-danger"></div> <!-- shows top-level errors --> *@
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label"></label>
+        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId">
+            <option value="">-- Select Category --</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DueDate" class="form-label"></label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsCompleted" class="form-check-input" />
+        <label asp-for="IsCompleted" class="form-check-label"></label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
